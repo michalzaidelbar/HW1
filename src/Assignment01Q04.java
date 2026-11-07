@@ -1,9 +1,28 @@
 import java.util.Arrays;
 
 public class Assignment01Q04 {
+    private static enum Direction{
+        R('R'), L('L');
 
+        private final char name;
+
+        private Direction(char name) { // constructor
+            this.name = name;
+            }
+            
+        private static final Direction values[] = values();
+    }
+
+    /**
+     * Shifts integers in a given array by a given number of positions left or right.
+     * @param array list of integers.
+     * @param move number of positions to shift integers by.
+     * @param direction R (right) or L (left).
+     * @return Array after being shifted.
+     */
     public static int[] shiftArrayCyclic(int[] array, int move, char direction) {
-        // TODO: implement
+        Direction test = Direction.valueOf(Character.toString(direction));
+        System.out.println(test);
         return array;
     }
 
