@@ -17,20 +17,19 @@ public class Assignment01Q04 {
                 move = -1 * move;
             }
             int len = array.length;
-            int[] new_array = new int[len];
             int shift_by = move % len;
-            shift_by = (direction == 'L') ? len - shift_by : shift_by;
-            // shifting a list by N is equivalent to taking the last N elements,
+            // Shifting a list by N rightwards is equivalent to taking the last N elements,
             // and then the first (len - N) elements.
+            // Shifting N leftwards is like shifting (len - N) rightwards.
+            shift_by = (direction == 'L') ? len - shift_by : shift_by;
+            // Store old first / new last elements
+            int[] temp_array = Arrays.copyOfRange(array, 0, len - shift_by);
             for (int i = 0; i < len; i++) {
-                new_array[i] = (i < shift_by) ? array[i + len - shift_by] : array[i - shift_by];
+                array[i] = (i < shift_by) ? array[i + len - shift_by] : temp_array[i - shift_by];
             }
-            
-            return new_array;
         }
-        else { // direction is invalid OR move is 0 OR list is empty -- no change
-            return array;
-        }
+        
+        return array;
     }
 
     public static void main(String[] args) {
